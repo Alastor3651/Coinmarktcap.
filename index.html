@@ -3,648 +3,669 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coinmarktcap Demo</title>
+<title>InvestPro Demo</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#07111f;
+  color:#fff;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #07111f;
-  color: #fff;
+.demo{
+  background:#f59e0b;
+  color:#111;
+  text-align:center;
+  padding:9px;
+  font-size:12px;
+  font-weight:bold;
 }
 
-.demo-bar {
-  background: #f59e0b;
-  color: #111827;
-  text-align: center;
-  padding: 10px;
-  font-size: 13px;
-  font-weight: bold;
+header{
+  height:70px;
+  background:#0b1728;
+  border-bottom:1px solid #22344c;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
 }
 
-header {
-  background: #0b1728;
-  border-bottom: 1px solid #203149;
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.logo{
+  font-size:23px;
+  font-weight:bold;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.logo span{color:#f59e0b}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:25px;
 }
 
-.logo span {
-  color: #f59e0b;
+nav a{
+  color:#aebdd0;
+  text-decoration:none;
 }
 
-nav {
-  display: flex;
-  gap: 25px;
-  align-items: center;
+.btn{
+  background:#f59e0b;
+  color:#111;
+  border:0;
+  padding:11px 18px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-nav a {
-  color: #b8c4d6;
-  text-decoration: none;
+.container{
+  width:88%;
+  max-width:1200px;
+  margin:40px auto;
 }
 
-nav a:hover {
-  color: #fff;
+.hero{
+  padding:35px 0;
 }
 
-button {
-  border: none;
-  cursor: pointer;
-  border-radius: 9px;
-  padding: 11px 18px;
-  font-weight: bold;
+.hero h1{
+  font-size:42px;
+  max-width:700px;
+  margin-bottom:15px;
 }
 
-.login-btn {
-  background: #f59e0b;
-  color: #111827;
+.hero p{
+  color:#9aabc0;
+  font-size:17px;
+  line-height:1.6;
+  max-width:650px;
 }
 
-.container {
-  width: 88%;
-  max-width: 1200px;
-  margin: 40px auto;
+.hero-buttons{
+  margin-top:25px;
+  display:flex;
+  gap:12px;
 }
 
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+.dark-btn{
+  background:#14243a;
+  color:#fff;
 }
 
-.hero p {
-  color: #9caec5;
-  margin-bottom: 30px;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+.card{
+  background:#0d1b2d;
+  border:1px solid #22344c;
+  border-radius:14px;
+  padding:22px;
 }
 
-.card {
-  background: #0d1b2d;
-  border: 1px solid #203149;
-  border-radius: 14px;
-  padding: 22px;
+.label{
+  color:#8ea0b6;
+  font-size:13px;
+  margin-bottom:10px;
 }
 
-.card-title {
-  color: #8fa1b8;
-  font-size: 14px;
-  margin-bottom: 10px;
+.value{
+  font-size:25px;
+  font-weight:bold;
 }
 
-.card-value {
-  font-size: 25px;
-  font-weight: bold;
+.green{color:#22c55e}
+.red{color:#ef4444}
+
+.section{
+  margin-top:40px;
 }
 
-.green {
-  color: #22c55e;
+.section h2{
+  margin-bottom:18px;
 }
 
-.red {
-  color: #ef4444;
+.plans{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.section {
-  margin-top: 35px;
+.plan{
+  background:#0d1b2d;
+  border:1px solid #22344c;
+  border-radius:15px;
+  padding:24px;
 }
 
-.section h2 {
-  margin-bottom: 18px;
+.plan h3{
+  margin-bottom:12px;
 }
 
-.chart {
-  height: 250px;
-  background: #0d1b2d;
-  border: 1px solid #203149;
-  border-radius: 14px;
-  padding: 15px;
+.plan .rate{
+  font-size:28px;
+  color:#f59e0b;
+  font-weight:bold;
+  margin-bottom:10px;
 }
 
-.chart svg {
-  width: 100%;
-  height: 100%;
+.plan p{
+  color:#8fa2b9;
+  line-height:1.6;
+  margin-bottom:18px;
 }
 
-.assets {
-  display: grid;
-  gap: 12px;
+.plan button{
+  width:100%;
 }
 
-.asset {
-  background: #0d1b2d;
-  border: 1px solid #203149;
-  border-radius: 12px;
-  padding: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.transactions{
+  background:#0d1b2d;
+  border:1px solid #22344c;
+  border-radius:14px;
+  overflow:hidden;
 }
 
-.asset-name {
-  font-weight: bold;
+.transaction{
+  display:flex;
+  justify-content:space-between;
+  padding:18px;
+  border-bottom:1px solid #1d3047;
 }
 
-.asset-symbol {
-  color: #8294ab;
-  font-size: 13px;
+.transaction:last-child{
+  border-bottom:0;
 }
 
-.demo-account {
-  background: #0d1b2d;
-  border: 1px solid #203149;
-  padding: 25px;
-  border-radius: 14px;
+.transaction small{
+  color:#8193aa;
 }
 
-.demo-account p {
-  color: #9caec5;
-  line-height: 1.6;
-  margin: 10px 0 20px;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.action {
-  background: #16263b;
-  color: white;
-}
-
-footer {
-  text-align: center;
-  color: #71839b;
-  padding: 40px 15px;
-  font-size: 13px;
+footer{
+  text-align:center;
+  padding:45px 15px;
+  color:#70839b;
+  font-size:12px;
 }
 
 /* MODAL */
 
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.75);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  z-index: 100;
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:20;
 }
 
-.modal-box {
-  width: 100%;
-  max-width: 430px;
-  background: #0d1b2d;
-  border: 1px solid #263b55;
-  border-radius: 16px;
-  padding: 28px;
-  position: relative;
+.box{
+  width:100%;
+  max-width:430px;
+  background:#0d1b2d;
+  border:1px solid #29405b;
+  border-radius:16px;
+  padding:28px;
+  position:relative;
 }
 
-.close {
-  position: absolute;
-  right: 18px;
-  top: 15px;
-  font-size: 25px;
-  color: #8da0b7;
-  cursor: pointer;
+.close{
+  position:absolute;
+  right:18px;
+  top:12px;
+  font-size:27px;
+  cursor:pointer;
+  color:#8ea0b6;
 }
 
-.modal-box h2 {
-  margin-bottom: 8px;
+.box h2{
+  margin-bottom:8px;
 }
 
-.modal-box .sub {
-  color: #91a1b6;
-  font-size: 14px;
-  margin-bottom: 22px;
+.sub{
+  color:#8ea0b6;
+  font-size:14px;
+  margin-bottom:22px;
 }
 
-.form-group {
-  margin-bottom: 15px;
+.group{
+  margin-bottom:15px;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 7px;
-  color: #c7d2e2;
-  font-size: 14px;
+.group label{
+  display:block;
+  font-size:13px;
+  color:#bdc9d8;
+  margin-bottom:7px;
 }
 
-.form-group input {
-  width: 100%;
-  padding: 13px;
-  border-radius: 8px;
-  border: 1px solid #30445e;
-  background: #081522;
-  color: white;
-  outline: none;
+.group input,
+.group select{
+  width:100%;
+  padding:13px;
+  background:#071522;
+  border:1px solid #30445e;
+  border-radius:8px;
+  color:white;
+  outline:none;
 }
 
-.form-group input:focus {
-  border-color: #f59e0b;
+.submit{
+  width:100%;
+  margin-top:5px;
 }
 
-.submit {
-  width: 100%;
-  background: #f59e0b;
-  color: #111827;
-  margin-top: 5px;
+.switch{
+  text-align:center;
+  color:#91a1b5;
+  font-size:14px;
+  margin-top:18px;
 }
 
-.switch {
-  text-align: center;
-  margin-top: 18px;
-  color: #91a1b6;
-  font-size: 14px;
+.switch span{
+  color:#f59e0b;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.switch span {
-  color: #f59e0b;
-  cursor: pointer;
-  font-weight: bold;
+.notice{
+  margin-top:17px;
+  padding:12px;
+  border-radius:8px;
+  background:#14243a;
+  color:#aebed1;
+  font-size:12px;
+  line-height:1.5;
 }
 
-.notice {
-  background: #17283d;
-  border: 1px solid #29415e;
-  border-radius: 9px;
-  padding: 12px;
-  margin-top: 15px;
-  font-size: 13px;
-  color: #c6d2e2;
+@media(max-width:850px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .plans{grid-template-columns:1fr}
+  nav a{display:none}
 }
 
-.account-welcome {
-  display: none;
-  background: #10243a;
-  border: 1px solid #284865;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 15px;
-}
-
-@media(max-width: 850px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  nav a {
-    display: none;
-  }
-}
-
-@media(max-width: 520px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  header {
-    padding: 15px 5%;
-  }
-
-  .hero h1 {
-    font-size: 28px;
-  }
+@media(max-width:520px){
+  .cards{grid-template-columns:1fr}
+  .hero h1{font-size:32px}
+  header{padding:0 5%}
 }
 </style>
 </head>
 
 <body>
 
-<div class="demo-bar">
-  DEMO PLATFORM — ACCOUNTS, BALANCES AND TRANSACTIONS ARE SIMULATED
+<div class="demo">
+DEMO PLATFORM — ALL BALANCES, INVESTMENTS AND TRANSACTIONS ARE SIMULATED
 </div>
 
 <header>
-  <div class="logo">Coin<span>marktcap</span></div>
+  <div class="logo">Invest<span>Pro</span></div>
 
   <nav>
     <a href="#dashboard">Dashboard</a>
-    <a href="#markets">Markets</a>
-    <a href="#portfolio">Portfolio</a>
-    <button class="login-btn" onclick="openLogin()">Login</button>
+    <a href="#plans">Plans</a>
+    <a href="#transactions">Transactions</a>
+    <button class="btn" onclick="openLogin()">Login</button>
   </nav>
 </header>
 
-<main class="container" id="dashboard">
+<div class="container">
 
-  <section class="hero">
-    <h1>Crypto Market Dashboard</h1>
-    <p>Explore a simulated cryptocurrency portfolio and market dashboard.</p>
-  </section>
+<section class="hero">
+  <h1>Manage your simulated investment portfolio.</h1>
 
-  <section class="cards" id="portfolio">
+  <p>
+    Explore an investment dashboard, create a demo account,
+    view simulated plans and track fictional portfolio activity.
+  </p>
 
-    <div class="card">
-      <div class="card-title">Demo Portfolio</div>
-      <div class="card-value">$12,840.50</div>
-      <div class="green">+4.82%</div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Demo Available</div>
-      <div class="card-value">$7,420.00</div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">24h Change</div>
-      <div class="card-value green">+$386.20</div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Assets</div>
-      <div class="card-value">8</div>
-    </div>
-
-  </section>
-
-  <section class="section">
-    <h2>Market Performance</h2>
-
-    <div class="chart">
-      <svg viewBox="0 0 900 250" preserveAspectRatio="none">
-        <polyline
-          points="0,200 80,175 150,190 230,135 310,155 390,105 470,125 550,75 630,100 710,55 800,80 900,25"
-          fill="none"
-          stroke="#f59e0b"
-          stroke-width="5"
-        />
-      </svg>
-    </div>
-  </section>
-
-  <section class="section" id="markets">
-    <h2>Demo Assets</h2>
-
-    <div class="assets">
-
-      <div class="asset">
-        <div>
-          <div class="asset-name">Bitcoin</div>
-          <div class="asset-symbol">BTC</div>
-        </div>
-        <div>
-          $67,420
-          <span class="green">+2.41%</span>
-        </div>
-      </div>
-
-      <div class="asset">
-        <div>
-          <div class="asset-name">Ethereum</div>
-          <div class="asset-symbol">ETH</div>
-        </div>
-        <div>
-          $3,520
-          <span class="green">+1.82%</span>
-        </div>
-      </div>
-
-      <div class="asset">
-        <div>
-          <div class="asset-name">Solana</div>
-          <div class="asset-symbol">SOL</div>
-        </div>
-        <div>
-          $182.40
-          <span class="red">-0.64%</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section">
-
-    <div class="demo-account">
-
-      <h2>Demo Account</h2>
-
-      <p>
-        Create a simulated account to explore the dashboard.
-        This demonstration does not accept money and does not perform
-        real cryptocurrency transactions.
-      </p>
-
-      <div class="actions">
-        <button class="login-btn" onclick="openSignup()">Create Account</button>
-        <button class="action" onclick="openLogin()">Login</button>
-      </div>
-
-      <div class="account-welcome" id="welcome"></div>
-
-    </div>
-
-  </section>
-
-</main>
-
-<footer>
-  Coinmarktcap Demo © 2026 · Independent demonstration project ·
-  Not affiliated with CoinMarketCap or any financial institution.
-</footer>
-
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-  <div class="modal-box">
-
-    <div class="close" onclick="closeModals()">×</div>
-
-    <h2>Demo Login</h2>
-
-    <div class="sub">
-      Sign in to your simulated account.
-    </div>
-
-    <form onsubmit="login(event)">
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="loginEmail" required>
-      </div>
-
-      <div class="form-group">
-        <label>Demo Password</label>
-        <input type="password" id="loginPassword" required>
-      </div>
-
-      <button class="submit" type="submit">
-        Login
-      </button>
-
-    </form>
-
-    <div class="switch">
-      Don't have an account?
-      <span onclick="openSignup()">Create Account</span>
-    </div>
-
-    <div class="notice">
-      Demo only. No real passwords or financial accounts are connected.
-    </div>
-
+  <div class="hero-buttons">
+    <button class="btn" onclick="openSignup()">Create Account</button>
+    <button class="btn dark-btn" onclick="openLogin()">Login</button>
   </div>
+</section>
+
+
+<section id="dashboard">
+
+<div class="cards">
+
+<div class="card">
+<div class="label">Portfolio Balance</div>
+<div class="value">$24,850.00</div>
+</div>
+
+<div class="card">
+<div class="label">Available Balance</div>
+<div class="value">$8,420.00</div>
+</div>
+
+<div class="card">
+<div class="label">Simulated Profit</div>
+<div class="value green">+$1,820.50</div>
+</div>
+
+<div class="card">
+<div class="label">Active Plans</div>
+<div class="value">3</div>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="plans">
+
+<h2>Investment Plans</h2>
+
+<div class="plans">
+
+<div class="plan">
+<h3>Starter</h3>
+<div class="rate">3.5%</div>
+<p>
+Simulated return example.<br>
+Duration: 7 days<br>
+Minimum: $100
+</p>
+<button class="btn" onclick="demoAction()">View Plan</button>
+</div>
+
+<div class="plan">
+<h3>Growth</h3>
+<div class="rate">7.5%</div>
+<p>
+Simulated return example.<br>
+Duration: 30 days<br>
+Minimum: $500
+</p>
+<button class="btn" onclick="demoAction()">View Plan</button>
+</div>
+
+<div class="plan">
+<h3>Premium</h3>
+<div class="rate">12%</div>
+<p>
+Simulated return example.<br>
+Duration: 90 days<br>
+Minimum: $1,000
+</p>
+<button class="btn" onclick="demoAction()">View Plan</button>
+</div>
+
+</div>
+</section>
+
+
+<section class="section" id="transactions">
+
+<h2>Recent Transactions</h2>
+
+<div class="transactions">
+
+<div class="transaction">
+<div>
+<strong>Demo Deposit</strong><br>
+<small>18 Sep 2026</small>
+</div>
+<div class="green">+$2,000</div>
+</div>
+
+<div class="transaction">
+<div>
+<strong>Demo Investment</strong><br>
+<small>17 Sep 2026</small>
+</div>
+<div>-$1,000</div>
+</div>
+
+<div class="transaction">
+<div>
+<strong>Simulated Profit</strong><br>
+<small>16 Sep 2026</small>
+</div>
+<div class="green">+$120</div>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="card">
+
+<h2>Demo Account</h2>
+
+<p style="color:#93a5bb;line-height:1.6;margin:12px 0 20px">
+Create an account to explore the platform.
+No real money is accepted or transferred.
+</p>
+
+<button class="btn" onclick="openSignup()">Create Demo Account</button>
+
+</div>
+
+</section>
 
 </div>
 
 
-<!-- SIGNUP MODAL -->
+<footer>
+InvestPro Demo © 2026<br><br>
+Independent educational demonstration. Not a financial institution,
+investment service, or affiliated with any real investment company.
+</footer>
+
+
+<!-- LOGIN -->
+
+<div class="modal" id="loginModal">
+
+<div class="box">
+
+<div class="close" onclick="closeAll()">×</div>
+
+<h2>Login</h2>
+
+<div class="sub">Access your demo account.</div>
+
+<form onsubmit="login(event)">
+
+<div class="group">
+<label>Email</label>
+<input type="email" id="loginEmail" required>
+</div>
+
+<div class="group">
+<label>Password</label>
+<input type="password" id="loginPassword" required>
+</div>
+
+<button class="btn submit">Login</button>
+
+</form>
+
+<div class="switch">
+Don't have an account?
+<span onclick="openSignup()">Create Account</span>
+</div>
+
+<div class="notice">
+Demo login only. No real financial account is connected.
+</div>
+
+</div>
+</div>
+
+
+<!-- SIGN UP -->
 
 <div class="modal" id="signupModal">
 
-  <div class="modal-box">
+<div class="box">
 
-    <div class="close" onclick="closeModals()">×</div>
+<div class="close" onclick="closeAll()">×</div>
 
-    <h2>Create Demo Account</h2>
+<h2>Create Account</h2>
 
-    <div class="sub">
-      Create an account for this demonstration.
-    </div>
+<div class="sub">Create your simulated account.</div>
 
-    <form onsubmit="signup(event)">
+<form onsubmit="signup(event)">
 
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" id="signupName" required>
-      </div>
+<div class="group">
+<label>Full Name</label>
+<input type="text" id="name" required>
+</div>
 
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="signupEmail" required>
-      </div>
+<div class="group">
+<label>Email</label>
+<input type="email" id="email" required>
+</div>
 
-      <div class="form-group">
-        <label>Demo Password</label>
-        <input type="password" id="signupPassword" minlength="4" required>
-      </div>
+<div class="group">
+<label>Country</label>
 
-      <button class="submit" type="submit">
-        Create Demo Account
-      </button>
+<select id="country" required>
 
-    </form>
+<option value="">Select country</option>
+<option>Nigeria</option>
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Canada</option>
+<option>Ghana</option>
+<option>South Africa</option>
+<option>Kenya</option>
+<option>India</option>
+<option>Germany</option>
+<option>France</option>
+<option>Other</option>
 
-    <div class="switch">
-      Already have an account?
-      <span onclick="openLogin()">Login</span>
-    </div>
+</select>
 
-    <div class="notice">
-      This creates only a local demo account on this device.
-      It does not create a real financial account.
-    </div>
+</div>
 
-  </div>
+<div class="group">
+<label>Password</label>
+<input type="password" id="password" minlength="4" required>
+</div>
 
+<button class="btn submit">
+Create Demo Account
+</button>
+
+</form>
+
+<div class="switch">
+Already registered?
+<span onclick="openLogin()">Login</span>
+</div>
+
+<div class="notice">
+This creates a local demonstration account only.
+It does not accept deposits or create a real investment account.
+</div>
+
+</div>
 </div>
 
 
 <script>
 
-function openLogin() {
-  closeModals();
-  document.getElementById("loginModal").style.display = "flex";
+function openLogin(){
+  closeAll();
+  document.getElementById("loginModal").style.display="flex";
 }
 
-function openSignup() {
-  closeModals();
-  document.getElementById("signupModal").style.display = "flex";
+function openSignup(){
+  closeAll();
+  document.getElementById("signupModal").style.display="flex";
 }
 
-function closeModals() {
-  document.getElementById("loginModal").style.display = "none";
-  document.getElementById("signupModal").style.display = "none";
+function closeAll(){
+  document.getElementById("loginModal").style.display="none";
+  document.getElementById("signupModal").style.display="none";
 }
 
-function signup(event) {
+function signup(e){
 
-  event.preventDefault();
+  e.preventDefault();
 
-  const name = document.getElementById("signupName").value;
-  const email = document.getElementById("signupEmail").value;
-  const password = document.getElementById("signupPassword").value;
-
-  const account = {
-    name: name,
-    email: email,
-    password: password
+  const account={
+    name:document.getElementById("name").value,
+    email:document.getElementById("email").value,
+    country:document.getElementById("country").value,
+    password:document.getElementById("password").value
   };
 
-  localStorage.setItem("coinmarktcapDemoAccount", JSON.stringify(account));
+  localStorage.setItem(
+    "investProDemoAccount",
+    JSON.stringify(account)
+  );
 
-  closeModals();
+  closeAll();
 
-  document.getElementById("welcome").style.display = "block";
-
-  document.getElementById("welcome").innerHTML =
-    "Welcome, <strong>" + name +
-    "</strong>! Your demo account has been created on this device.";
-
-  alert("Demo account created successfully!");
+  alert(
+    "Demo account created successfully!\\n\\n"+
+    "Welcome, "+account.name+"."
+  );
 }
 
-function login(event) {
+function login(e){
 
-  event.preventDefault();
+  e.preventDefault();
 
-  const saved = localStorage.getItem("coinmarktcapDemoAccount");
+  const saved=localStorage.getItem("investProDemoAccount");
 
-  if (!saved) {
-    alert("No demo account found. Please create an account first.");
+  if(!saved){
+    alert("No demo account exists yet. Please create one first.");
     openSignup();
     return;
   }
 
-  const account = JSON.parse(saved);
+  const account=JSON.parse(saved);
 
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
+  const email=document.getElementById("loginEmail").value;
+  const password=document.getElementById("loginPassword").value;
 
-  if (email === account.email && password === account.password) {
+  if(email===account.email && password===account.password){
 
-    closeModals();
+    closeAll();
 
-    document.getElementById("welcome").style.display = "block";
+    alert(
+      "Login successful!\\n\\n"+
+      "Welcome back, "+account.name+"."
+    );
 
-    document.getElementById("welcome").innerHTML =
-      "Welcome back, <strong>" + account.name +
-      "</strong>! You are viewing the demo dashboard.";
+  }else{
 
-  } else {
-
-    alert("The email or demo password is incorrect.");
+    alert("Incorrect demo email or password.");
 
   }
 }
 
-window.onclick = function(event) {
+function demoAction(){
 
-  if (event.target.classList.contains("modal")) {
-    closeModals();
+  alert(
+    "Demo feature only.\\n\\n"+
+    "This investment plan does not accept real money."
+  );
+
+}
+
+window.onclick=function(e){
+
+  if(e.target.classList.contains("modal")){
+    closeAll();
   }
 
 };
